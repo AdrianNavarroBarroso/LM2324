@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HORARIO 1º ASIR</title>
+</head>
+<body>
+    <style>
+    body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    table {
+        margin: 15% auto;
+        height: 100%;
+    }
+
+    .tabla, td, th, tr{
+        border: 5px solid white;
+        text-align: center;
+        width: fit-content;
+        border-collapse: collapse;
+    }
+
+    td, th, tr{
+        padding: 15px 30px;
+        border-radius: 10px;
+    }
+
+    .hora, th{
+        background: rgb(214, 214, 214);
+    }
+
+    .hora {
+        font-style: italic;
+    }
+
+    th {
+        font-weight: bold;
+    }
+
+    .descanso {
+        font-style: italic;
+        background: rgb(214, 214, 214);
+    }
+
+    .iso {
+        background: rgb(233, 186, 233);
+    }
+
+    .funh {
+        background: rgb(230, 170, 170);
+    }
+
+    .bd {
+        background: rgb(161, 221, 161);
+    }
+
+    .fol {
+        background: #9fd4d4;
+    }
+
+    .ral {
+        background: rgb(240, 240, 154);
+    }
+
+    .lem {
+        background: rgb(175, 175, 223);
+    }
+    </style>
+    <div class="table_container">
+        <table class="tabla">
+            <tr class="encabezados">
+                <th>HORA</th>
+                <th>LUNES</th>
+                <th>MARTES</th>
+                <th>MIERCOLES</th>
+                <th>JUEVES</th>
+                <th>VIERNES</th>
+            </tr>
+            <tr>
+                <td class="hora">08:00 - 09:00</td>
+                <td class="iso">ISO</td>
+                <td class="iso">ISO</td>
+                <td class="funh">FunH</td>
+                <td class="iso">ISO</td>
+                <td class="bd">BD</td>
+            </tr>
+            <tr>
+                <td class="hora">09:00 - 10:00</td>
+                <td class="iso">ISO</td>
+                <td class="iso">ISO</td>
+                <td class="funh">FunH</td>
+                <td class="bd">BD</td>
+                <td class="bd">BD</td>
+            </tr>
+            <tr>
+                <td class="hora">10:00 - 11:00</td>
+                <td class="fol">FOL</td>
+                <td class="bd">BD</td>
+                <td class="ral">RAL</td>
+                <td class="fol">FOL</td>
+                <td class="iso">ISO</td>
+            </tr>
+            <tr>
+                <td class="hora">11:00 - 11:30</td>
+                <td colspan="5" class="descanso">DESCANSO</td>
+            </tr>
+            <tr>
+                <td class="hora">11:30 - 12:30</td>
+                <td class="ral">RAL</td>
+                <td class="ral">RAL</td>
+                <td class="bd">BD</td>
+                <td class="lem">LenM</td>
+                <td class="lem">LenM</td>
+            </tr>
+            <tr>
+                <td class="hora">12:30 - 13:30</td>
+                <td class="ral">RAL</td>
+                <td class="ral">RAL</td>
+                <td class="bd">BD</td>
+                <td class="lem">LenM</td>
+                <td class="lem">LenM</td>
+            </tr>
+            <tr>
+                <td class="hora">13:30 - 14:30</td>
+                <td class="funh">FunH</td>
+                <td class="ral">RAL</td>
+                <td class="iso">ISO</td>
+                <td class="lem">LenM</td>
+                <td class="lem">LenM</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
