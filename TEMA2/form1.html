@@ -6,6 +6,36 @@
     <title>Formulario 1</title>
 </head>
 <body>
+    <form>
+        <fieldset>
+            <legend>Rellenar</legend>
+            <input type="radio" name="idioma" value="idiomaingles"> Inglés<br>
+            <input type="radio" name="idioma" value="idiomaaleman"> Alemán<br>
+            <input type="radio" name="idioma" value="idiomafrances"> Francés<br><br>
+
+            <select name="conector" id="conector">
+                <option value="usb">USB</option>
+                <option value="paralelo">Paralelo</option>
+                <option value="ps2">PS2</option>
+            </select><br><br>
     
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre"><br>
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" name="apellidos" id="apellidos"><br><br>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Indique sus preferencias por favor</legend>
+
+            <select multiple>
+                <option value="sexohombre">Hombre</option>
+                <option value="sexomujer">Mujer</option>
+            </select><br><br>
+    
+            <label for="fecha">Elija una fecha:</label>
+            <input type="date" name="fecha" id="fecha"><br><br>
+        </fieldset>
+    </form>
 </body>
 </html>
