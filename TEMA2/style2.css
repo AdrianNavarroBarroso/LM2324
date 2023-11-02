@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;300;700&display=swap');
+
+*, *::after, *::before{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+}
+
+h1{font-size: 2rem; line-height: 2.2rem;}
+
+p, a, button{ font-size: 1rem; line-height: 2.2rem;}
+
+.header {
+    background: #f7f7f7;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    width: 100%;
+    height: 20vh;
+
+    padding: 0 2%;
+}
+
+.header__container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 80%;
+    height: 60%;
+}
+
+
+.container__img{
+    width: 10%;
+    height: 10vh;
+    display: flex;
+}
+
+.container__img img{
+    width: 100%;
+    height: 10vh;
+    object-fit: contain;
+    mix-blend-mode: color-burn;
+}
+
+.header_nav {
+    max-width: 1440px;
+    padding: 10px;
+
+    width: 50%;
+    height: 100%;
+    display: flex;
+}
+
+.header_nav li {
+    display: flex;
+    width: 100%;
+    height: 100%;
+
+    align-items: center;
+    justify-content: flex-end;
+    
+    list-style-type: none;
+}
+
+.header_nav li a {
+    padding: 2%;
+    width: fit-content;
+    height: fit-content;
+
+    background: #f7f7f7;
+    color: #000000;
+
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.header__title{
+    color: #f7f7f7;
+    background: #000000;
+
+    padding: 1%;
+}
+
+.header__title h1{
+    font-weight: 500;
+}
+
+.header__sub{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 80%;
+    height: 40%;
+}
+
+.header__sub li {
+    list-style-type: none;
+    padding: 0 1%;
+}
+
+.header__sub li a {
+    text-decoration: none;
+
+    color: #5f5f5f
+}
+
+.sub__container_img{
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+
+.sub__container_img div{
+    width: 15%;
+    height: 100%;
+    padding: 2%;
+}
+
+.sub__container_img div img{
+    width: 100%;
+    object-fit: contain;
+}
+
+.sub__contact{
+    display: flex;
+
+    width: 70%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.main{
+    background: #000000;
+
+    width: 100%;
+    height: 70vh;
+
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+
+
+
+
+.section-1 {
+    width: 100%;
+    min-height: 80vh;
+
+    display: grid;
+}
+
+.section-1__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    flex-direction: column;
+
+    flex-wrap:nowrap;
+
+    width: 100%;
+    height: 100%;
+}
+
+.row-1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    flex-direction: row;
+
+    flex-wrap:nowrap;
+
+    width: 100%;
+     
+}
+
+.row-2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    flex-direction: row;
+
+    flex-wrap:nowrap;
+
+    width: 100%;
+      
+}
+
+.row-1 div, .row-2 div {
+    width: 25%;
+    padding: 2%;
+}
+
+.row-1 div img, .row-2 div img{
+    width: 100%;
+    object-fit: contain;
+    aspect-ratio: 16/9;
+}
+
+.section-1__container h1{
+    color:cyan;
+    
+}
+
+.section-1__container p{
+    width: 50%;
+}
+
+.section-1__container button{
+    padding: 0 2%;
+    width: fit-content;
+    height: fit-content;
+
+    background: #1c6161;
+
+    border: none;
+    color: #f7f7f7;
+
+    text-decoration: none;
+}
+
+
+
+.footer {
+    background: #1c6161;
+
+    width: 100%;
+    height: 10vh;
+
+    padding: 2%;
+}
+
+.footer__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+}
+
+.footer__container p {
+    padding: 0 0.5%;
+    
+}
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f7f7f7;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #1c6161;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #124141;
+  }
+  
