@@ -1,0 +1,100 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background-color: white;
+    font-family: "Century Gothic", helvetica, arial, sans-serif;
+    font-size: 1.1em;
+}
+
+header {
+    background-color: darkgray;
+    text-align: center;
+}
+
+.central {
+    display: flex;
+    flex-direction: row;
+}
+
+nav {
+    background-color: darkcyan;
+    width: 15em;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+nav a {
+    display: block;
+    padding: 0.5em 1em;
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+nav a:hover {
+ background-color: progress;
+}
+
+section {
+    background-color: darkolivegreen;
+    width: fit-content;
+}
+
+section h2 {
+    background-color: darkolivegreen;
+}
+
+section img {
+    float: left;
+    margin-top: 10px;
+    margin-right: 10px;
+    border: 5px solid goldenrod;
+    border-radius: 2vh;
+    max-width: 100%;
+}
+
+section p::first-letter {
+    font-size: 2em;
+    color: darkgray;
+}
+
+footer {
+    background-color: darkgoldenrod;
+    text-align: center;
+}
+
+header, nav, section, footer {
+    padding: 20px;
+    margin: 1px;
+    border: 2px solid whitesmoke;
+    border-radius: 10px;
+    color: white;
+  }
+
+@media (max-width: 640px) {
+    .central {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav {
+        width: 90%; /*No se puede poner en auto porque sino deja de tomar el tamaño total del contenedor*/
+    }
+
+    section {
+        width: 90%; /*No se puede poner en auto porque sino deja de tomar el tamaño total del contenedor*/
+    }
+}
+
+@media print {
+    nav {
+      display: none;
+    }
+}
+
+@media print {
+    body {
+      font-family: "Times New Roman", Times, serif;
+    }
+}

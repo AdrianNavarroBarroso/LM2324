@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+      background-color: white;
+      font-family: "Century Gothic", helvetica, arial, sans-serif;
+      font-size: 1.1em;
+    }
+
+    header, nav, section, footer {
+      padding: 20px;
+      margin: 20px;
+      border: 2px solid whitesmoke;
+      border-radius: 10px;
+      color: white;
+    }
+
+    header {
+      background-color: darkgray;
+      text-align: center;
+    }
+
+    nav {
+      background-color: darkcyan;
+      width: 50em;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    nav a {
+      display: block;
+      padding: 0.5em 1em;
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    @media (max-width: 640px) {
+      nav {
+        width: auto;
+        order: 2;
+      }
+    }
+
+    section {
+      background-color: darkolivegreen;
+    }
+
+    section h2 {
+      background-color: darkolivegreen;
+    }
+
+    section img {
+      float: left;
+      margin-top: 10px;
+      margin-right: 10px;
+      border: 5px solid goldenrod;
+      border-radius: 2vh;
+      max-width: 100%;
+    }
+
+    section p:first-child::first-letter {
+      font-size: 2em;
+      color: darkgray;
+    }
+
+    footer {
+      background-color: darkgoldenrod;
+      text-align: center;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <!-- Contenido del encabezado -->
+    <h1>Encabezado</h1>
+  </header>
+
+  <div style="display: flex;">
+    <nav>
+      <!-- Contenido de la barra de navegación -->
+      <a href="#" style="background-color: progress;">Enlace 1</a>
+      <a href="#" style="background-color: progress;">Enlace 2</a>
+      <a href="#" style="background-color: progress;">Enlace 3</a>
+      <a href="#" style="background-color: progress;">Enlace 4</a>
+    </nav>
+
+    <section>
+      <!-- Contenido de la sección -->
+      <h2>Contenido de la Sección</h2>
+      <img src="https://picsum.photos/200" alt="Imagen aleatoria">
+      <p><strong>Texto en negrita</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p><em>Texto en cursiva</em> Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p><u>Texto subrayado</u> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p><del>Texto tachado</del> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      <p><span style="color: red;">Texto con color rojo</span> Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </section>
+  </div>
+
+  <footer>
+    <!-- Contenido del pie de página -->
+    <a href="mailto:tu-correo@example.com" title="Envíanos un correo">Tu Nombre Apellido</a>
+  </footer>
+
+</body>
+</html>
