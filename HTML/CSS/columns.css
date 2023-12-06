@@ -1,0 +1,48 @@
+header {
+    text-align: center;
+}
+
+body {
+    background-color: antiquewhite;
+    font-family: Arial;
+}
+
+.borde-caja {
+    display: grid;
+    width: 80%;
+    margin: 0 auto;
+    grid-template-columns: auto auto auto;
+    background-color: lightgreen;
+    border: solid black 1px;
+    padding: 20px;
+}
+
+.caja {
+    border: solid black 4px;
+    background-color: lightgray;
+    text-align: center;
+    line-height: 150px;
+}
+
+#caja1 {
+    grid-column: span 3;
+    background-color: lightblue;
+}
+
+#caja2 {
+    grid-column: span 2;
+    background-color: lightgoldenrodyellow;
+}
+
+#caja3 {
+    background-color: lightsalmon;
+}
+
+#caja11 {
+    grid-column: span 2;
+}
+
+#caja12 {
+    grid-column: span 3;
+    background-color: lightseagreen;
+}
