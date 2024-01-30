@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validación de Campos</title>
+</head>
+<body>
+
+<form id="miFormulario">
+  <label for="nombre">Nombre:</label>
+  <input type="text" id="nombre" required>
+
+  <label for="email">Correo electrónico:</label>
+  <input type="email" id="email" required>
+
+  <label for="telefono">Teléfono:</label>
+  <input type="tel" id="telefono" required>
+
+  <button type="button" onclick="validarCampos()">Validar Campos</button>
+</form>
+
+<script>
+function validarCampos() {
+  var elementos = document.getElementById("miFormulario").elements;
+
+  for (var i = 0; i < elementos.length; i++) {
+    if (elementos[i].hasAttribute("required") && elementos[i].value.trim() == "") {
+      alert("Por favor, complete todos los campos obligatorios.");
+      return false;
+    }
+  }
+
+  alert("Todos los campos obligatorios están completados.");
+}
+</script>
+
+</body>
+</html>
