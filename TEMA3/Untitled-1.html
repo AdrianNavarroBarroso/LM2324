@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>JavaScript Arrays</h1>
+<h2>Looping an Array</h2>
+
+<p id="compra"></p>
+
+<script>
+const lista_compra = ["Huevos", "Leche", "Carne", "Cerveza"];
+let cLen = lista_compra.length;
+
+let lista = "<ul>";
+for (let i = 0; i < cLen; i++) {
+  lista += "<li>" + lista_compra[i] + "</li>";
+}
+lista += "</ul>";
+
+document.getElementById("compra").innerHTML = lista;
+</script>
+
+</body>
+</html>
