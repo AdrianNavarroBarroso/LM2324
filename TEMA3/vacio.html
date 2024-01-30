@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Validación de Campos</title>
+  <script src="vacio.js"></script>
 </head>
 <body>
 
@@ -19,21 +20,5 @@
 
   <button type="button" onclick="validarCampos()">Validar Campos</button>
 </form>
-
-<script>
-function validarCampos() {
-  var elementos = document.getElementById("miFormulario").elements;
-
-  for (var i = 0; i < elementos.length; i++) {
-    if (elementos[i].hasAttribute("required") && elementos[i].value.trim() == "") {
-      alert("Por favor, complete todos los campos obligatorios.");
-      return false;
-    }
-  }
-
-  alert("Todos los campos obligatorios están completados.");
-}
-</script>
-
 </body>
 </html>
