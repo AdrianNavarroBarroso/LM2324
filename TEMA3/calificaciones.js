@@ -3,11 +3,11 @@ let lista = [];
 function introducir() {
     var calificacion = document.getElementById("numero").value;
 
-    if (calificacion === "") {
-        alert("Introduce una calificación");
+    if (calificacion === "" && calificacion ) {
+        alert("Introduce una calificación válida");
     } else {
         lista.push(parseFloat(calificacion));
-        mostrarListado();
+        tipoLista();
         document.getElementById("numero").value = "";
     }
 }
