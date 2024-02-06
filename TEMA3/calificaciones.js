@@ -1,36 +1,46 @@
 let lista = [];
 
 function introducir() {
+    var calificacion = document.getElementById("numero").value;
 
-    var calificacion = document.getElementById("numero").value; 
-
-    if(calificacion == "" ){
-        alert("Introduce una calificación")
+    if (calificacion === "") {
+        alert("Introduce una calificación");
+    } else {
+        lista.push(parseFloat(calificacion));
+        mostrarListado();
+        document.getElementById("numero").value = "";
     }
-    else {
+}
 
-    lista.push(calificacion);
-
+function tipoLista() {
     let nota = "<ul>";
-    let calificaciones = lista.length;
-    
-    for (let i = 0; i < calificaciones; i++) {
-        nota += "<li>"  + lista[i] + "</li>";
+    for (let i = 0; i < lista.length; i++) {
+        nota += "<li>" + lista[i] + "</li>";
     }
+    nota += "</ul>";
     document.getElementById("listado").innerHTML = nota;
-    document.getElementById("numero").value = "";
-    }
 }
 
-function borrar(){
+function borrar() {
     lista.length = 0;
-    document.getElementById("listado").innerHTML = lista;
+    tipoLista();
+    resultado();
 }
 
-function media(){
-    if(lista.length === 0){
-        alert("No hay calificaciones");
-    }else{
-        
+function media() {
+    let suma = 0;
+    for (let i = 0; i < lista.length; i++) {
+        suma += lista[i];
     }
+
+    let media = 0;
+    if (lista.length > 0) {
+        media = suma / lista.length;
+    }
+
+    resultado(media);
+}
+
+function resultado(media) {
+    document.getElementById("resultado").innerHTML = "Media: " + media;
 }
