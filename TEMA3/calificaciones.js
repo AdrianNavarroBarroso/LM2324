@@ -3,7 +3,7 @@ let lista = [];
 function introducir() {
     var calificacion = document.getElementById("numero").value;
 
-    if (calificacion === "" && calificacion >= 0 || calificacion <= 10) {
+    if (calificacion === "" || calificacion < 0 || calificacion > 10) {
         alert("Introduce una calificación válida");
     } else {
         lista.push(parseFloat(calificacion));
