@@ -22,9 +22,11 @@ function tipoLista() {
 }
 
 function borrar() {
+    document.getElementById("resultado").innerHTML = "";
     lista.length = 0;
     tipoLista();
     resultado();
+    media();
 }
 
 function media() {
@@ -42,5 +44,5 @@ function media() {
 }
 
 function resultado(media) {
-    document.getElementById("resultado").innerHTML = "Media: " + media;
+    document.getElementById("resultado").innerHTML = "Media: " + media.toFixed(2);
 }
