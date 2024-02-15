@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitas</title>
+</head>
+<body>
+    <h1>Visitas</h1>
+    <p id="visitas"></p>
+    <button id="reiniciar" onclick="reiniciarBucle()">Reiniciar bucle</button>
+    <script>
+        function reiniciarBucle(){
+            localStorage.setItem("Visitas","1");
+            document.getElementById("visitas").innerHTML = "Es la primera vez que entras en la página";
+        }
+        function cargaPagina(){
+            let valor = parseInt(localStorage.getItem("Visitas"));
+            if (valor != null){
+                document.getElementById("visitas").innerHTML = "Has visitado esta página "+valor+" veces";
+                valor++;
+                localStorage.setItem("Visitas", valor);
+            } else{
+                reiniciarBucle();
+            }
+        }
+        window.onload = cargaPagina();
+    </script>
+</body>
+</html>
