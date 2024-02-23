@@ -1,25 +1,68 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Tareas</title>
+<meta charset="UTF-8">
+<title>Ejercicio 4: Eliminar Tareas</title>
+<script>
+function agregarTarea() {
+    const tarea = document.getElementById('tarea').value;
+    if (tarea) {
+        const lista = document.getElementById('listaTareas');
+        const elemento = document.createElement('li');
+        elemento.textContent = tarea;
+        
+        const botonEliminar = document.createElement('button');
+        botonEliminar.textContent = 'Eliminar';
+        botonEliminar.onclick = function() {
+            lista.removeChild(elemento);
+            guardarTareas();
+        };
+        
+        elemento.appendChild(botonEliminar);
+        lista.appendChild(elemento);
+
+        guardarTareas();
+    }
+}
+
+function guardarTareas() {
+    const tareas = [];
+    document.querySelectorAll('#listaTareas li').forEach(function(item) {
+        tareas.push(item.firstChild.textContent);
+    });
+    localStorage.setItem('tareas', JSON.stringify(tareas));
+}
+
+function cargarTareas() {
+    const tareas = JSON.parse(localStorage.getItem('tareas'));
+    if (tareas) {
+        const lista = document.getElementById('listaTareas');
+        tareas.forEach(function(tarea) {
+            const elemento = document.createElement('li');
+            elemento.textContent = tarea;
+            
+            const botonEliminar = document.createElement('button');
+            botonEliminar.textContent = 'Eliminar';
+            botonEliminar.onclick = function() {
+                lista.removeChild(elemento);
+                guardarTareas();
+            };
+            
+            elemento.appendChild(botonEliminar);
+            lista.appendChild(elemento);
+        });
+    }
+}
+
+window.onload = cargarTareas;
+</script>
 </head>
 <body>
-    <p>Añadir elementos a una lista</p>
-    <ul id="lista">
-    </ul>
-    <script>
-        function anadirElemento() {
-            var lista = document.getElementById("lista");
-            
-            for(var i=1; i <= 20; i++){
-                var elemento = document.createElement("li");
-                elemento.innerHTML = "<a href=fichero"+i+".pdf target=blank>Fichero" + (lista.children.length + 1) + "<img width=25 src=download.png> </a>";
-                lista.appendChild(elemento);
-            }
-        }
-        window.onload = anadirElemento();
-    </script>
+
+<input type="text" id="tarea">
+<button onclick="agregarTarea()">Agregar Tarea</button>
+
+<ul id="listaTareas"></ul>
+
 </body>
 </html>
