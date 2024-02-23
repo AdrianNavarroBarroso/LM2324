@@ -7,14 +7,39 @@
 </head>
 <body>
     <h1>CAMBIAR FONDO</h1>
-    <button id="claro" onclick="">Tema Claro</button>
-    <button id="oscuro" onclick="">Tema oscuro</button>
+    <button id="claro" onclick="temaClaro()">Tema Claro</button>
+    <button id="oscuro" onclick="temaOscuro()">Tema oscuro</button>
     <script>
-        var temaAnterior = localStorage.getItem("theme");
         var claro = document.getElementById("claro");
         var oscuro = document.getElementById("oscuro");
+        var temaAnterior = localStorage.getItem("tema");
 
-        
+        function temaClaro(){
+            document.body.style.backgroundColor = "#fff";
+            document.body.style.color = "#000";
+            guardarTema("claro");
+        }
+
+        function temaOscuro(){
+            document.body.style.backgroundColor = "#000";
+            document.body.style.color = "#fff";
+            guardarTema("oscuro");
+        }
+
+        function guardarTema(tema){
+            if(temaAnterior != null){
+                localStorage.setItem("tema", tema);
+            }
+        }
+
+        function cargarTema(){
+            if(temaAnterior === "claro"){
+                temaClaro();
+            }else if(temaAnterior === "oscuro"){
+                temaOscuro();
+            }
+        }
+        window.onload = cargarTema();
     </script>
 </body>
 </html>
