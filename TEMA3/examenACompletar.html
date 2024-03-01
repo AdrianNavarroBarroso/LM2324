@@ -18,24 +18,52 @@
           <option value="Monospace">Monospace</option>
           </select> </td>
       <td><input id="color" type="color" onchange="cambiarColor()"></td>
+      <td><button onclick="guardarConfiguracion()">Guardar</button></td>
     </tr>
   </table>
   <script type="text/javascript">
-      var tamano = 100; // TamaNo inicial
+      var parrafo = document.getElementById("parrafo").style;
+      var configuracion = {
+        tamanoFuente: 100,
+        colorFuente: "#000",
+        familiaFuente: "Times New Roman"
+      };
+      
       function aumenta(){
-        tamano+=25;
-        document.getElementById("parrafo").style.fontSize = tamano+"%"; // aumentamos un 25% el tamaño
+        configuracion.tamanoFuente += 25;
+        parrafo.fontSize = configuracion.tamanoFuente + "%";
       }
+
       function disminuye(){
-        tamano-=25;
-        document.getElementById("parrafo").style.fontSize = tamano+"%"; //decrementamos un 25% el tamaño
+        configuracion.tamanoFuente -= 25;
+        parrafo.fontSize = configuracion.tamanoFuente + "%";
       }
+
       function cambiarColor(){
-        document.getElementById("parrafo").style.color = document.getElementById("color").value; //Cambiamos el color del parrafo
+        parrafo.color = document.getElementById("color").value;
+        configuracion.colorFuente = document.getElementById("color").value;
       }
+
       function cambiarFuente(font) {
-        document.getElementById("parrafo").style.fontFamily = font.value; // Cambiamos la fuente del parrafo
+        parrafo.fontFamily = font.value;
+        configuracion.familiaFuente = font.value;
       }
+      
+      function guardarConfiguracion() {
+        localStorage.setItem("configuracion", JSON.stringify(configuracion));
+      }
+
+      function cargarConfiguracion(){
+        var objeto = localStorage.getItem("configuracion");
+        if (objeto != null){
+          configuracion = JSON.parse(objeto);
+          parrafo.color = configuracion.colorFuente;
+          parrafo.fontFamily = configuracion.familiaFuente;
+          parrafo.fontSize = configuracion.tamanoFuente + "%";
+        }
+      }
+
+      window.onload = cargarConfiguracion();
 
   </script>
   </body>
