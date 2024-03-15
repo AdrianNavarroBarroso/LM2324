@@ -81,3 +81,13 @@
     </script>
 </body>
 </html>
+<!--
+    generaNumero(): Esta función se encarga de generar un número aleatorio de tres cifras y mostrarlo al usuario en el párrafo con id "secreto". Para generar el número, utiliza la función Math.random() para obtener números aleatorios entre 0 y 1, y Math.ceil() para redondearlos al entero más cercano hacia arriba. Luego, concatena tres de estos números aleatorios para formar un número de tres cifras y lo muestra en el párrafo mencionado.
+
+comenzar(): Esta función se activa cuando el usuario hace clic en el botón "Comenzar". Inicializa el tiempo de inicio del juego utilizando new Date().getTime(), llama a la función generaNumero() para generar un nuevo número aleatorio, y muestra el campo de entrada de número y el botón de comprobación. También verifica si hay un récord actual almacenado en el almacenamiento local y lo muestra junto con el número generado.
+
+comprueba(): Esta función se activa cuando el usuario hace clic en el botón "Comprobar". Primero, recupera el número ingresado por el usuario desde el campo de entrada de número. Luego, compara este número con el número generado aleatoriamente.
+
+Si los números coinciden, calcula el tiempo que tardó el usuario en adivinar el número utilizando new Date().getTime() nuevamente, y muestra un mensaje de felicitación junto con el tiempo transcurrido. Si el tiempo es menor que el récord actual (o si no hay un récord), actualiza el récord almacenado en el almacenamiento local y muestra un mensaje de nuevo récord.
+Si los números no coinciden, cuenta cuántas cifras coinciden entre el número ingresado y el número generado. Esto se hace comparando cada cifra en la misma posición en ambos números. Luego, muestra un mensaje indicando cuántas coincidencias se encontraron.
+-->
