@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distancias</title>
+</head>
+<body>
+    <h1>Calculadora de distancia de viajes</h1>
+    <input type="text" placeholder="Distancia,distancia,distancia" id="distancias"></input>
+    <button onclick="calcular()">Calcular</button>
+    <script>
+        let distancias [];
+        var n = parseInt(document.getElementById("distancias").value.split(','));
+            
+        function calcular(){
+            if(document.getElementById("distancias").value != null){
+                distancias.push(n);
+                sumar();
+            }
+            alert("Introduce alguna distancia");
+            
+        }
+
+        function sumar(){
+            var s = 0;
+            for (var i = 0; i < distancias.length; i++){
+                s += distancias[i];
+            }
+                alert("Tu viaje consta de "+s+" km");
+        }
+
+    </script>
+</body>
+</html>

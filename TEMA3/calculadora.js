@@ -1,5 +1,4 @@
 const numeros = [];
-document.getElementById("lista").innerHTML = numeros;
 
 function agregar(){
     var n = parseFloat(document.getElementById("valor").value);
