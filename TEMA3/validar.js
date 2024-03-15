@@ -1,26 +1,25 @@
 function validar(elementos){
     let estanCorrectos = true;
     for (var i=0;i<elementos.length;i++){
-        document.getElementById("campo"+(i+1).toString()).innerHTML = "";        
+        document.getElementById("campo"+(i+1).toString()).innerHTML = ""; // Por defecto el campo está OK       
         if (elementos[i].value == "" || (i==6 && !elementos[i].checked)){
+            // Si el campo está vacío o (el campo es la casilla de verificación y no está marcada) entonces ...
             document.getElementById("campo"+(i+1).toString()).innerHTML = "El campo " + elementos[i].id + " está vacío";
             estanCorrectos = false;
-        }    
+        }
+        
     }
-
-    if (!validarEmail()){
+    if (!validarEmail()){ // Si no es válido el correo
         document.getElementById("campo3").innerHTML = "Email no válido";        
         estanCorrectos = false;
     }
-
-    if (!validarPassword()){
-        document.getElementById("campo4").innerHTML = "La contraseña no cumple los requisitos o no coincide"; 
-        document.getElementById("campo5").innerHTML = "La contraseña no cumple los requisitos o no coincide";        
+    if (!validaPasswords()){ // Si no son válidas las contraseñas
+        document.getElementById("campo4").innerHTML = "La contraseña no cumple con requisitos de longitud o no coinciden";        
+        document.getElementById("campo5").innerHTML = "La contraseña no cumple con requisitos de longitud o no coinciden";
         estanCorrectos = false;
     }
-
     if (!validarDNI()){
-        document.getElementById("campo6").innerHTML = "DNI no válido";    
+        document.getElementById("campo6").innerHTML = "DNI no válido (12345678X)";
         estanCorrectos = false;
     }
     return estanCorrectos;
@@ -28,7 +27,6 @@ function validar(elementos){
 /* Función validarEmail tomada de:
 * https://www.coderbox.net/blog/validar-email-usando-javascript-y-expresiones-regulares/
 */
-
 function validarEmail(){              
 	var valido;
 	var emailField = document.getElementById('email');
@@ -40,27 +38,25 @@ function validarEmail(){
 	}
     return valido;
 } 
-
-function validarPassword(){
-    var contra1 = document.getElementById('password').value;
-    var contra2 = document.getElementById('r_password').value;
-    var contraOk = true;
-
-    if(contra1.length < 8 || contra1 != contra2){
-        contraOk = false;
-    }
-    return contraOk;
+function validaPasswords(){
+    // return (document.getElementById("password1").value == document.getElementById("password2").value) && document.getElementById("password2").value.length>=8;
+    let clave1 = document.getElementById("password1").value;
+    let clave2 = document.getElementById("password2").value;
+    let passwordsOK = true; // Cumple con los requisitos establecidos
+    if (clave1.length<8 || (clave1!=clave2))
+        passwordsOK = false;
+    return passwordsOK;
 }
 
 function validarDNI(){
-    var letra = ["T","R","W","A","G","M","Y","F","P","D","X","B","N","J","Z","S","Q","V","H","L","C","K","E"];
-    var cadena = document.getElementById('dni').value;
-    var numero = cadena.substring(0,8);
-    var letraUsuario = cadena[8];
-    var letraReal = letra[numero%23];
-    var dniValido = true;
-    if (letraUsuario != letraReal){
+    var letra=['T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E'];
+    var cadena = document.getElementById("dni").value.toUpperCase(); // DNI Completo en mayúsculas
+    var cadena2 = cadena.replace(/\s+/g, ''); // Elimina los espacios en la cadena
+    var numero = parseInt(cadena2.substring(0,8)); // Parte numérica
+    var letraUsuario = cadena2[8]; // Letra escrita por el usuario
+    var letraReal = letra[numero%23]; // Letra "real" del DNI calculada según "fórmula"
+    var dniValido =true;
+    if (letraUsuario!=letraReal) // Si no coincide letras es falso
         dniValido = false;
-    }
     return dniValido;
 }
