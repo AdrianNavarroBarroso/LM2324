@@ -1,0 +1,19 @@
+{
+  "name": "proyecto_ajax",
+  "version": "1.0.0",
+  "description": "Proyecto Ajax",
+  "main": "index.js",
+  "scripts": {
+    "dev": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdrianNavarroBarroso/LM2324.git"
+  },
+  "author": "Adrián Navarro Barroso",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AdrianNavarroBarroso/LM2324/issues"
+  },
+  "homepage": "https://github.com/AdrianNavarroBarroso/LM2324#readme"
+}
