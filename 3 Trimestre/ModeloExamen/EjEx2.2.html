@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alexandria">
+    <title>Fake Store API</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Alexandria', sans-serif;
+        }
+
+        h1 {
+            font-size: xx-large;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .contenedor {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .formulario {
+            width: 80%;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            margin: 50px auto;
+            background-color: rgb(255, 255, 255);
+            border-radius: 10px;
+            padding: 50px;
+            box-shadow: 10px 10px 10px #7c7e8b;
+            overflow: auto;
+            border: 1px dashed black;
+
+        }
+
+        .formulario>* {
+            margin: 10px;
+            padding: 10px;
+        }
+
+        input,
+        label {
+            font-size: 1.5em;
+        }
+
+        button {
+            background-color: #373841;
+            font-size: x-large;
+            height: 60px;
+            width: 25%;
+            border-radius: 20px;
+            color: white;
+            margin-left: 2%;
+            margin-top: 1%;
+        }
+        button:hover {
+            background-color: #545662;
+            opacity: 0.8;
+        }
+        .caja{
+            margin: 10px 10px 20px 10px;
+            border-radius: 20px;
+            padding: 10px;
+            width: 40%;
+            text-align: center;
+            border: 1px solid #7c7e8b;
+        }
+        #resultados{
+            display: flex;
+            flex-wrap:wrap;
+            flex-direction: row;
+            text-align: center;
+            justify-content: center;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="contenedor">
+        <div class="formulario">
+            <h1>Fake Store API</h1>
+            <label for="codProducto">Código producto:</label>
+            <input min="1" type="number" name="codProducto" id="codProducto" value="1">
+            <br>
+            <label for="botones">Acción:</label>
+            <button id="btn-producto">Obtener producto</button>
+            <button id="btn-todos">Ver todos</button>
+            <div id="resultados">
+                <!-- Aqui cargaremos los resultados-->
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $("#btn-producto").click(function(){
+
+                let codProducto=$("#codProducto").val();
+                if(codProducto!="" && codProducto > 0){
+                //El usuario habia escrito algo
+                    $("#resultados").empty();
+                $.ajax({
+
+                    url:"https://fakestoreapi.com/products/" + codProducto,
+                    dataType:"json",
+
+                    success:function(datos){
+                        console.log(datos);
+                        var caja=$("<div class='caja'></div>");
+                        caja.append("<p>"+"<b>Nombre: </b>"+datos.title+"</p>");
+                        caja.append("<p>"+"<b>Precio: </b>"+datos.price+"</p>");
+                        caja.append("<p>"+"<b>Descripcion: </b>" + datos.description+">"+"<br>");
+                        caja.append("<p>"+"<img src="+datos.image+" width=30%></p>");
+                        $("#resultados").append(caja);
+                    },
+
+                    error:function(error){
+                        console.log(error);
+                        $("#resultados").append("<p>No se ha podido contactar con el servidor o el ID que has proporcionado no existe</p>");
+                    }
+                });
+                }else{
+                    $("#resultados").empty();
+                    $("#resultados").append("Por favor, debe introducir un id. Si no dispone de uno, puede presionar el botón <i>'Ver Todos'</i>");
+                }
+            });
+
+            $("#btn-todos").click(function(){
+                //El usuario habia escrito algo
+                    $("#resultados").empty();
+                $.ajax({
+
+                    url:"https://fakestoreapi.com/products/",
+                    dataType:"json",
+
+                    success:function(datos){
+                        console.log(datos);
+                        for(var i = 0; i < datos.length; i++){
+                            var caja=$("<div class='caja'></div>");
+                            caja.append("<p>"+"<b>ID: </b>"+datos[i].id+"</p>");
+                            caja.append("<p>"+"<b>Nombre: </b>"+datos[i].title+"</p>");
+                            caja.append("<p>"+"<b>Precio: </b>"+datos[i].price+"</p>");
+                            caja.append("<p>"+"<b>Descripcion: </b>" + datos[i].description+">"+"<br>");
+                            caja.append("<p>"+"<img src="+datos[i].image+" width=30%></p>");
+                            $("#resultados").append(caja);
+                        }
+                    },
+
+                    error:function(error){
+                        console.log(error);
+                        $("#resultados").append("<p>Error cargando datos del servidor</p>");
+                    }
+                });
+                
+                });
+            });
+
+    </script>
+</body>
+
+</html>

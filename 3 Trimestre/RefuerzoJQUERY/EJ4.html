@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API GitHub</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <style>
+         #mostrar{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            border-radius: 20px;
+            padding: 2rem;
+            background-color: #89D2DC;
+
+        }
+    
+        body{
+            background-color: #101D42;
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Perfiles GitHub</h1>
+    <p><label for="">Introduce un nombre de usuario: </label><input type="text" placeholder="Username" id="usuario"></p>
+    <p ><button>Buscar</button></p>
+    <div id="boton"></div>
+</body>
+<script>
+    $(document).ready(function(){
+        $("button").click(function(){
+            
+            var usuario = $("#usuario").val();
+            $.ajax({
+
+                url:'https://api.github.com/users/' + usuario,
+                dataType:'json',
+                success:function(datos){
+                    $("#boton").empty();
+                    var nuevo = $("<p></p>")
+                    nuevo.append("Login: "+ datos.login + "<br>");
+                    nuevo.append("ID: "+ datos.id + "<br>");
+                    nuevo.append("<img src="+datos.avatar_url +" width='10%'>"+ "<br>");
+                    nuevo.append("<a href='https://github.com/pacolopez16/LM2324'>" + "Enlace a repositorio LM2324 del usuario" + "</a>" + "<br>");
+                    $("#boton").append(nuevo);
+
+                }
+            });
+        });
+    });
+</script>
+</html>

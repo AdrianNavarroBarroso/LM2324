@@ -1,0 +1,32 @@
+<!--A) Dado un archivo ejemplo.json que se encuentra alojado en la carpeta raíz del
+servidor realizar una solicitud get para mostrarlo por consola o en caso de que no
+exista un mensaje de error.-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <title>AJAX2A</title>
+</head>
+<body>
+    <script>
+        $.get("LiteServer/Esqueletos_jquery_/ejemplo.json").done(function(t1){
+
+            console.log(e.Mensaje);
+        }).fail(function(t1){
+            console.log("El archivo no se encuentra en el servidor");
+        });
+
+        /* OTRA FORMA
+        $.getJSON('ejemplo.json').done(function(e){
+            console.log(e.Mensaje);
+        }).fail(function (){
+            console.log("El archivo no se encuentra en el servidor");
+        })
+        */
+    </script>
+
+</body>
+</html>

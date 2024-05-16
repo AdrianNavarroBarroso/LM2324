@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+    <script>
+         $( function() {
+            $( "#dialog-confirm" ).dialog({
+                resizable: false,
+                height: "auto",
+                width: 400,
+                modal: true,
+            
+                buttons: {
+                    "Delete all items": function() {
+                        $("h1").hide();
+                        $("p").hide();
+                    $( this ).dialog( "close" );
+                    },
+                    Cancel: function() {
+                    $( this ).dialog( "close" );
+                    }
+                }
+            });
+        });
+       
+ 
+    $( "#btn-abrir" ).on( "click", function() {
+      $( "#dialogo" ).dialog( "open" );
+    });
+  
+    </script>
+</head>
+<body>
+    <h1>Ejemplo de dialogo modal</h1>
+    <div id="dialog-confirm" title="Empty the recycle bin?">
+        <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Esto está oculto de manera predeterminada hasta que hagamos click en el boton de abrir diálogo</p>
+    </div>
+    <p>Sed vel diam id libero <a href="https://example.com">rutrum convallis</a>. Donec aliquet leo vel magna. Phasellus rhoncus faucibus ante. Etiam bibendum, enim faucibus aliquet rhoncus, arcu felis ultricies neque, sit amet auctor elit eros a lectus.</p>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variadito</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+        
+       
+        $(document).ready(function () {
+            $("#resultado1").html($("h1").length);
+            $("#resultado2").html($("p").length);
+            $("#resultado3").html($("a").length);
+            $("#resultado4").html($("img").length);
+        });
+    
+    </script>
+    <h1>Encabezado 1</h1>
+    <h1>Encabezado 2</h1>
+    <h1>Encabezado 3</h1>
+    <p>Lorem ipsum dolor <a href="">sit amet</a> consectetur, adipisicing elit. Quo ut minima nam repellat neque ducimus quibusdam. Dolorem molestias praesentium iste vitae maiores repellendus. Architecto quod nesciunt voluptate aut, non consequatur.</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo ut minima nam repellat nequea <a href="">ducimus quibusdam</a> . Dolorem molestias praesentium iste vitae maiores repellendus. Architecto quod nesciunt voluptate aut, non consequatur.</p>
+    <img src="" alt="Es una foto">
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo ut minima nam repellat neque ducimus quibusdam. Dolorem molestias praesentium iste vitae maiores repellendus. Architecto quod nesciunt voluptate aut, non consequatur.</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo ut minima nam repellat neque ducimus quibusdam. Dolorem molestias praesentium iste vitae maiores repellendus. Architecto quod nesciunt voluptate aut, non consequatur.</p>
+
+    <table>
+        <tr>
+            <th>Encabezados</th>
+            <th>Párrafos</th>
+            <th>Enlaces</th>
+            <th>Imágenes</th>
+        </tr>
+
+        <tr>
+            <th id="resultado1"></th>
+            <th id="resultado2"></th>
+            <th id="resultado3"></th>
+            <th id="resultado4"></th>
+        </tr>
+    </table>
+</body>
+</html>

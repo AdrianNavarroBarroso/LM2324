@@ -1,0 +1,40 @@
+<!--Podemos serializar datos utilizando jQuery para enviar datos al servidor. Utiliza los
+metodos serialize() y serializeArray() sobre el objeto formulario para comprobar
+mediante consola cómo se enviarían los datos. Prueba también a crear un objeto en
+JavaScript y utilizar el método param(obj) para visualizar su codificación.-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX5</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $("button").click(function(){
+
+                $("#serializado").text($("form").serialize());
+                
+            });
+        });
+
+       
+    </script>
+</head>
+<body>
+
+    <!--serialize()-->
+    <form action="">
+        <p>Nombre: <input type="text" name="nombre" id=""></p>
+        <p>Primer Apellido: <input type="text" name="primerapellido" id=""></p>
+        <p>Segundo Apellido: <input type="text" name="segundoapellido" id=""></p>
+        
+    </form>
+    <p><button>Serializar</button></p>
+    <p id="serializado"></p>
+    
+</body>
+</html>

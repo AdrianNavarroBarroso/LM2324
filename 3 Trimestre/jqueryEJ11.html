@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Función empty</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        
+        
+        div{
+
+            background-color:red;
+            width: 400px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        button{margin: 2rem; }
+    </style>
+</head>
+<body>
+    
+
+    <div><p>Este es el contenido de la caja</p></div>
+    <button id="vaciar">Vaciar contenido de DIV</button>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#vaciar").click(function(){
+                $("div").empty();
+            });
+        });
+
+    </script>
+</body>
+</html>

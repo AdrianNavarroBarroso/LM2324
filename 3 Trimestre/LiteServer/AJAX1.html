@@ -1,0 +1,45 @@
+<!--Utilizando el método ajax de jQuery recorre el documento HTML buscando todos los
+enlaces cuya clase sea “enlaces” y solicitando al servidor el ‘Content-Length’ de los
+mismos para añadirles su tamaño al lado.
+Pista: Utilizaremos el método each para recorrer todos los enlaces y append para
+asociarles el tamaño en formato legible.-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <title>AJAX1</title>
+</head>
+<body>
+    <div>
+        <h1>Boletines oficiales del estado</h1>
+        <p>Aquí tenemos una maravillosa biblioteca de archivos...</p>
+        <ul>
+            <li><a class="enlaces" href="LiteServer/Esqueletos_jquery_/BOE-A-2022-18812.pdf" target="_blank">BOE-A-2022-18812.pdf</a></li>
+            <li><a class="enlaces" href="LiteServer/Esqueletos_jquery_/BOE-A-2022-18896" target="_blank">BOE-A-2022-18896</a></li>    
+            <li><a class="enlaces" href="LiteServer/Esqueletos_jquery_/BOE-A-2022-19008.pdf" target="_blank">BOE-A-2022-19008.pdf</a></li>
+            <li><a class="enlaces" href="LiteServer/Esqueletos_jquery_/BOE-A-2022-19085.pdf" target="_blank">BOE-A-2022-19085.pdf</a></li>
+        </ul>
+    </div>
+    <script>
+        $("a.enlaces").each(function(a){
+            
+            $("a.enlaces").each(function(){ // Con esto barremos el documento buscando elementos tipo anchor tag y clase enlaces
+            var link = this;
+            $.ajax({
+                type: "HEAD",   // https://developer.mozilla.org/es/docs/Web/HTTP/Methods
+                url: link.href, // Dirección del servidor
+                complete: function (xhr){
+                    var size = xhr.getResponseHeader('Content-Length');
+                    // Añadimos a los links el tamaño
+                    $(link).append(' ('+unidadesLegibles(size)+')');
+                }
+            })
+        })
+            
+        })
+    </script>
+</body>
+</html>

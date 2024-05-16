@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#ocultar").click(function(){
+
+                $('#pares,#encabezado').hide();
+            });
+
+            $("#aparecer").click(function(){
+
+                $('#pares,#encabezado').show();
+            });
+        });
+    </script>
+</head>
+<body>
+    
+    <h1 id="encabezado">Encabezado nivel 1</h1>
+    <p>Parafo 1</p>
+    <p id="pares">Parafo 2</p>
+    <p>Parafo 3</p>
+    <p id="pares">Parafo 4</p>
+    <button id="ocultar">Ocultar</button>
+    <button id="aparecer">Aparecer</button>
+</body>
+</html>

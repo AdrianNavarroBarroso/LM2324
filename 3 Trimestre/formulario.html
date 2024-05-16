@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validar formulario con JQuery</title>
+    <style>
+        input,button{
+            position:static;
+            margin: 5px 5px;
+        }
+        input:focus{outline: 2px solid #bbb370;}
+        button:hover{background-color: #bbb370;}
+        input::placeholder{text-align: center;}
+        span{
+            /* position:absolute; */
+            color: red;
+            
+        }
+        #caja{
+            /*Permite centrar el div*/
+            position: absolute;
+            box-sizing: border-box;
+            text-align: center;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            /*Permite dimensionar y distribuir los elementos de la caja*/
+            width:fit-content;
+            height: 25vw; 
+            background-color: #5672c03d;
+            box-shadow: 0px 0px 30px rgb(167, 167, 168);
+            padding: 2rem;
+            border-radius: 10px;
+            
+        }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="caja">
+        <input type="text" placeholder="Nombre" id="nombre" required><span id="errorNombre"></span><br>
+        <input type="text" placeholder="Apellidos" id="apellidos" required><span id="errorApellidos"></span><br>
+        <input type="email" placeholder="Email" id="correo" required><span id="errorCorreo"></span><br>
+        <input type="date" name="" id="fnac"><br>
+        <input type="text" name="" id="dni" placeholder="12345678X" required><span id="errorDNI"></span><br>
+        <input type="password" placeholder="Password" id="password1" required><span id="errorPassword1"></span><br>
+        <input type="password" placeholder="Repetir password" id="password2" required><span id="errorPassword2"></span><br>
+        <input type="checkbox" name="" id="privacidad" required><label for="">Acepta la política de privacidad</label><span id="errorPrivacidad"></span><br>
+        <button>Registrarse</button>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function(){
+
+                let patronEmail= /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+                let patronPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%-_*?&])[A-Za-z\d$@$!%*-_?&]{8,}/;
+                let nombre = $("#nombre").val();
+                let apellido = $("#apellidos").val();
+                let correo = $("#correo").val();
+                let dni = $("#dni").val();
+                let password1 = $("#password1").val();
+                let password2 = $("#password2").val();
+                let privacidad = $("#privacidad").is(":checked");
+
+
+                if(nombre==""){
+                    $("#errorNombre").text("Rellenar el campo nombre");
+                }else{
+                    $("#errorNombre").text("");
+                }
+
+                if(apellido==""){
+                    $("#errorApellidos").text("Rellenar el campo apellidos");
+                }else{
+                    $("#errorApellidos").text("");
+                }
+
+                if(correo==""){
+                    $("#errorCorreo").text("Rellenar el campo correo");
+                }else{
+                    if(!patronEmail.test(correo)){ /*Otra forma !correo.match(patronEmail)*/
+                        $("#errorCorreo").text("Formato no válido de correo");
+                    }else{
+                        $("#errorCorreo").text("");
+                    }
+                    
+                }
+
+                if(dni==""){
+                    $("#errorDNI").text("Rellenar el campo DNI");
+                }else{
+                    $("#errorDNI").text("");
+                }
+
+                if(password1!=password2){
+                    $("#errorPassword1").text("Las contraseñas deben de coincidir");
+                    $("#errorPassword2").text("Las contraseñas deben de coincidir");
+                }else{
+                    if(!patronPassword.test(password1)){
+                    $("#errorPassword1").text("No cumple con los requisitos. Longitud mínima 8, incluir mayúscula, minúscula");
+                    $("#errorPassword2").text("No cumple con los requisitos. Longitud mínima 8, incluir mayúscula, minúscula");
+                    }else{
+                        $("#errorPassword1").text("");
+                        $("#errorPassword2").text("");
+                    }
+                }
+
+                if(!privacidad){
+                    $("#errorPrivacidad").text("Debes aceptar la política de privacidad");
+                }else{
+                    $("#errorPrivacidad").text("");
+                }   
+            
+
+            });
+        });
+    </script>
+</body>
+</html>

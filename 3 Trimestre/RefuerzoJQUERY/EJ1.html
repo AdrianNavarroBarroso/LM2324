@@ -1,0 +1,40 @@
+<!--Create una cuenta en OpenWeatherMap, obtén una API key para obtener el tiempo
+actual y muestra en el párrafo identificado como “objetivo” la temperatura. Considera
+la posibilidad de que el servidor no esté disponible o la solicitud sea inválida para
+mostrar un mensaje de error.-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX6</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            $("button").click(function(){
+
+                var ubicacion = $("#ubicacion").val();
+
+                $.ajax({
+                    url:"http://api.openweathermap.org/data/2.5/weather?q=" + ubicacion + '&appid=eba114bff280b4d8179fdb772d7dfbcd&units=metric',
+                    success:function(result,status,xhr){
+                        $("#objetivo").html("En "+ ubicacion+" hace " + result.main.temp+" ºC");
+                    },
+                    error: function(xhr,status,error){
+                        $("#objetivo").text(status+" "+error+" "+xhr.status+" : Ha habido un fallo con el servidor");
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>¡Vamos a mostrar la temperatura de hoy!</h1>
+    <p>Indique la ciudad donde desea ver la temperatura actual: <input type="text" name="" id="ubicacion"></p>
+    <p><button>Enviar</button></p>
+    <p id="objetivo"></p>
+</body>
+</html>

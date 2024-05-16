@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alexandria">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <title>Visualizador libros</title>
+    <!-- Aquí añadimos el código para poder trabajar con jQuery -->
+    <style>
+        body {
+            font-family: 'Alexandria', sans-serif;
+        }
+        h1{
+            font-size: xx-large;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .contenedor {
+            display: flex;
+            flex-wrap:wrap;
+            flex-direction: column;
+            text-align: center;
+           
+        }
+        .formulario {
+            width: 80%;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            margin: 50px auto;
+            background-color: rgb(133, 181, 197);
+            border-radius: 10px;
+            padding: 50px;
+            box-shadow: 10px 10px 10px #7c7e8b;
+            overflow:auto;
+        }
+        .formulario > * {
+            margin: 10px;
+            padding: 10px;
+        }
+        input, label {
+            font-size: 1.5em;
+        }
+        button {
+            background-color:#091661;
+            font-size: x-large;
+            height: 60px;
+            width: 25%;
+            border-radius: 20px;
+            color: white;
+            margin-left: 2%;
+            margin-top: 1%;
+        }
+        .caja{
+            margin: 10px 10px 20px 10px;
+            border-radius: 20px;
+            padding: 10px;
+            background-color: #e27962;
+            width: 40%;
+            text-align: center;
+            
+        }
+        #resultados{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <div class="formulario">
+            <h1>Gutendex API</h1>
+            <label for="codlibro">Código Libro:</label>
+            <input type="number" name="codLibro" id="codLibro" min="1">
+            <br>
+            <label for="botones">Acción:</label>
+            <button id="btn-libro">Obtener libro</button>
+            <button id="btn-todos">Ver todos</button>
+            <div id="resultados">
+                <!-- Aqui cargaremos los resultados-->
+            </div>
+        </div>
+    </div>
+    <script>    
+
+    $(document).ready(function () {
+        $("#btn-libro").click(function(){
+            let codlibro=$("#codLibro").val();
+            if(codlibro!=""){
+                //El usuario habia escrito algo
+                    $("#resultados").empty();
+                $.get("https://gutendex.com/books/" + codlibro).done(function(respuesta){
+                    console.log(respuesta);
+                    var caja=$("<div class='caja'></div>");
+                    caja.append("<p>"+"<b>Título del libro: </b>"+respuesta.title+"</p>");
+                    caja.append("<p>"+"<b>Nombre del autor: </b>"+respuesta.authors[0].name+"</p>");
+                    caja.append("<img src="+respuesta.formats['image/jpeg']+">"+"<br>");
+                    caja.append("<a href="+respuesta.formats['text/plain; charset=us-ascii']+" target='_blank'>"+"Enlace a la descarga del libro"+"</a>");
+                    caja.append("<p>"+"<b> Número de descargas: </b>"+respuesta.download_count+"</p>");
+                    $("#resultados").append(caja);
+
+                }).fail(function(){
+                    $("#resultados").append("Por favor, asegurase de que el código que ha introducido pertenece a un libro.");
+                });
+            }else{
+                $("#resultados").empty();
+                $("#resultados").append("Por favor, debe introducir un código de libro. Si no dispone de uno puede presionar el botón <i>'Ver Todos'</i>");
+            }
+        });
+        $("#btn-todos").click(function(){
+            $.get("https://gutendex.com/books/").done(function(respuesta){
+                $("#resultados").empty();
+                console.log(respuesta);
+                
+                for(var i = 0; i < respuesta.results.length;i++){
+                    var caja=$("<div class='caja'></div>");
+                    caja.append("<p>"+"<b>Título del libro: </b>"+respuesta.results[i].title+"</p>");
+                    caja.append("<p>"+"<b>Nombre del autor: </b>"+respuesta.results[i].authors[0].name+"</p>");
+                    caja.append("<img src="+respuesta.results[i].formats['image/jpeg']+">"+"<br>");
+                    caja.append("<a href="+respuesta.results[i].formats['text/plain; charset=us-ascii']+" target='_blank'>"+"Enlace a la descarga del libro"+"</a>");
+                    caja.append("<p>"+"<b> Número de descargas: </b>"+respuesta.results[i].download_count+"</p>");
+                    $("#resultados").append(caja);
+                }   
+            }).fail(function(){
+
+            });
+        });
+    });
+
+    </script>
+</body>
+</html>

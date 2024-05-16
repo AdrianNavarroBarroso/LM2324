@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API películas</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <style>
+         #caja{
+            margin-top: 20px;
+            border-radius: 20px;
+            width: 40%;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            top: 50%;
+            left: 50%;
+            max-height: 65%;
+            overflow: auto;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+        #div{
+            margin: 10px 10px 20px 10px;
+            border-radius: 20px;
+            padding: 2rem;
+            background-color: #6B9080;;
+            width: 90%;
+            text-align: justify;
+        }
+        img{
+            margin: 10px 10px 20px 10px;
+            border-radius: 20px;
+            padding: 2rem;
+            width: 30%;
+        }
+        body{
+            background-color: #B2AA8E;
+            text-align: center;
+        }
+        span{
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Información de películas</h1>
+    <p><label for="">Introduce el nombre de una película: </label><input type="text" placeholder="Divergente" id="pelicula"></p>
+    <p id="boton"><button>Buscar</button></p>
+    <div id="caja"></div>
+</body>
+<script>
+    $(document).ready(function(){
+        $("button").click(function(){
+            
+            var titulo = $("#pelicula").val();
+            $.ajax({
+
+                url:'http://www.omdbapi.com/?apikey=1e8a3cbe&t=' + titulo,
+                dataType:'json',
+                success:function(datos){
+
+                    console.log(datos);
+                    if(datos.Response!="False"){
+                        $("#caja").empty();
+                        var div = $("<div id='div'></div>");
+                        div.append("<span>Título de la película: </span>"+ datos.Title + "<br>");
+                        div.append("<span>Año de lanzamiento: </span>"+ datos.Year + "<br>");
+                        div.append("<span>Fecha de lanzamiento: </span>"+ datos.Released + "<br>");
+                        div.append("<span>Género: </span>"+ datos.Genre + "<br>");
+                        div.append("<span>Director: </span>"+ datos.Director + "<br>");
+                        div.append("<span>Guionista: </span>"+ datos.Writer + "<br>");
+                        div.append("<img src="+datos.Poster+"/>")
+                        $("#caja").append(div);
+                    }else{
+                        $("#caja").empty();
+                        $("#caja").append("La película que busca no se encuentra en la base de datos");
+                    }
+                },
+                error: function(error) {
+                    console.log(error);
+                    $("#caja").empty();
+                    $("#caja").append("Ha habido un problema con el servidor.");
+                  }
+            });
+        });
+    });
+</script>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio hacker</title>
+</head>
+<body>
+    <h1>Caja de texto</h1>
+    <input type="text" id="caja">
+    <button id="boton">Obtener valor</button>
+    <script>
+        $(document).ready(function(){
+            $("#boton").click(function(){
+                let edad=parseInt($("#caja").val());
+                let texto="";
+                if(edad>=18){
+                    texto="Eres mayor de edad";
+                }else{
+                    texto="Eres menor de edad";
+                }
+                alert(texto);
+            });
+
+        });
+    </script>
+</body>
+</html>

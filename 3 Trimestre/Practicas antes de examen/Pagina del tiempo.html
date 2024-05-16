@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Tiempo</title>
+    <link rel="icon" href="iconoTiempo.jpg" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    
+    <style>
+
+        #interfaz{
+            /* Centra el div padre */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* Dimensión y diseño de div */
+            width: 40%;
+            height: 60%;
+            text-align: center;
+            background-color: #63A0BD;  
+            padding: 20px;
+            border-radius: 9px;
+        }
+
+        .tiempo{display:inline-block;}
+
+        body{
+
+            background: url(nubes.gif) no-repeat center center fixed; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+             background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+        
+        h2,h6{ margin-top:10px;margin-bottom: 12px;}
+        input,button{border-radius: 6px;}
+        button{background-color: #a6b5ca;}
+    </style>
+</head>
+<body>
+    <div id="interfaz">
+    
+    <h2>¡Bienvenido a la web del Tiempo!</h2>
+    <input type="text" placeholder="Indique la ciudad" id="ubicacion"><button id="cargar"><img src="magnifying-glass-solid.svg" width="20px"></button>
+    <p id="error"></p>
+    </div>
+    
+
+    <script>  
+ 
+        //Creamos el objeto pagina
+        var pagina ={};
+        
+        pagina.cargar= function(){
+            
+            var ubicacion=$("#ubicacion").val();
+            pagina.ubicacion = ubicacion;
+            pagina.url='https://api.weatherapi.com/v1/forecast.json?key=885c13b9b2dd445080f94518240105&q=' + ubicacion + '&days=1&aqi=no&alerts=no';
+            $.ajax({
+                        url: pagina.url,
+
+                        success:function(data){
+                            
+                            console.log(data);
+                            pagina.datos= data;
+                            pagina.estructura= $("#interfaz");
+                            pagina.estructura.text("");
+                            pagina.procesaDatos();
+                        },
+
+                        error:function(datos){
+                            
+                            $("#error").text("Ha habido un error al intentar obtener una respuesta del servidor: "+ datos.statusText + " " + datos.status);
+                        }
+                    });
+        }
+ 
+        pagina.procesaDatos=function(){
+            
+            pagina.estructura.append("<h2>Mi ubicación</h2>");
+            pagina.estructura.append("<h6>"+pagina.ubicacion+"</h6>");
+
+            for(var i=0; i < pagina.datos.forecast.forecastday[0].hour.length; i++){
+                
+                pagina.hora=pagina.datos.forecast.forecastday[0].hour[i].time;
+                pagina.temperatura=pagina.datos.forecast.forecastday[0].hour[i].temp_c;
+                pagina.condiciones= pagina.datos.forecast.forecastday[0].hour[i].condition;
+                pagina.icono=pagina.datos.forecast.forecastday[0].hour[i].condition.icon;
+                pagina.estructura.append("<div class='tiempo'>"+"<p>"+pagina.hora.substr(11,15)+ "</p>"+"<img src="+pagina.icono+">"+"</div>");
+            }
+        }
+        
+        $(document).ready(function(){
+            $("#cargar").click(function(){
+            
+                pagina.cargar();
+            });
+        });
+    </script>
+</body>
+</html>

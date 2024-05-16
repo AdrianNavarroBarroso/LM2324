@@ -1,0 +1,25 @@
+<!--B) Utilizando el servicio de https://jsonip.com y la función get de jQuery muestra en
+el párrafo denominado “objetivo” la dirección IP pública de nuestro router.-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX2B</title>
+</head>
+<body>
+    
+    <p id="objetivo"></p>
+    <script>
+        $(document).ready(function(){
+        $.get("https://jsonip.com").done(function (a) {  
+            
+            $("#objetivo").text(a['ip']);
+        }).fail(function (e){
+            $("#objetivo").text("Se ha producido un error " + e[status]);
+        })
+    });
+    </script>
+</body>
+</html>

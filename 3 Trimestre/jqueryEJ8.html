@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+<body>
+    
+    <h1>Esto es un título</h1>
+    <img src="foto.jpg" alt="">
+    <p id="primero">Lorem ipsum dolor, sit amet <a href="https://www.marca.com" target="_blank">consectetur adipisicing elit</a> . Consequatur magnam corporis possimus exercitationem facilis ea consectetur debitis qui, dolor accusantium cum illo! Odio tempore vitae nostrum? Maiores ipsam dolores vero?</p>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur magnam corporis possimus exercitationem facilis ea consectetur debitis qui, dolor accusantium cum illo! Odio tempore vitae nostrum? Maiores ipsam dolores vero?</p>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur magnam corporis possimus exercitationem facilis ea consectetur debitis qui, dolor accusantium cum illo! Odio tempore vitae nostrum? Maiores ipsam dolores vero?</p>
+    <button id="boton1">Obtener html del encabezado</button>
+    <button id="boton2">Obtener scr de la imagen</button>
+    <button id="boton3">Obtener html del parrafo</button>
+    
+    <script>
+        $(document).ready(function () {
+            $("#boton1").click(function(){
+                alert("El html del encabezado es: "+$("h1").html());
+            });
+            $("#boton2").click(function(){
+                alert("El src de la imagen es: "+$("img").attr("src"));
+            });
+            $("#boton3").click(function(){
+                alert("El html del parrafo es: "+$("#primero").html());
+            });
+        });
+    </script>
+</body>
+</html>
